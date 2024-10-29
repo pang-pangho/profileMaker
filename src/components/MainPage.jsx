@@ -3,10 +3,10 @@ import domtoimage from "dom-to-image";
 import "./mainPageStyle.scss";
 
 export default function BusinessCardCreator() {
-  const [name, setName] = useState("김광호");
-  const [email, setEmail] = useState("day_adm@naver.com");
-  const [github, setGithub] = useState("http");
-  const [stack, setStack] = useState("React");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [github, setGithub] = useState("");
+  const [stack, setStack] = useState("");
   const [image, setImage] = useState("/placeholder.svg?height=100&width=100");
   const cardRef = useRef(null);
 
