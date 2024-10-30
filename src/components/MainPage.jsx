@@ -7,7 +7,9 @@ export default function BusinessCardCreator() {
   const [email, setEmail] = useState("");
   const [github, setGithub] = useState("");
   const [stack, setStack] = useState("");
-  const [image, setImage] = useState("/placeholder.svg?height=100&width=100");
+  const [image, setImage] = useState(
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeUGzSUbfQVEgY4TH7CZEl14ED8WXrixgU9A&s"
+  );
   const cardRef = useRef(null);
 
   const handleImageUpload = (e) => {
@@ -31,6 +33,12 @@ export default function BusinessCardCreator() {
       });
     }
   };
+
+  // 모든 필드가 입력되었는지 확인하는 함수
+  const isFormComplete = () => {
+    return name && email && github && stack;
+  };
+
   return (
     <div className="business-card-creator">
       <header>
@@ -43,7 +51,7 @@ export default function BusinessCardCreator() {
             <div className="profile-image">
               <div className="image-wrapper">
                 {image ? (
-                  <img src={image} alt="" />
+                  <img src={image} alt="Profile" />
                 ) : (
                   <div className="placeholder" />
                 )}
@@ -92,9 +100,16 @@ export default function BusinessCardCreator() {
               />
             </div>
           </div>
-          <div className="card-footer">
-            <button onClick={handleDownload}>다운로드</button>
-          </div>
+        </div>
+        {/* 다운로드 버튼을 카드 바깥에 위치 */}
+        <div className="download-section">
+          <button
+            onClick={handleDownload}
+            disabled={!isFormComplete()} // 모든 필드가 입력되지 않으면 비활성화
+            className={`download-button ${isFormComplete() ? "" : "disabled"}`}
+          >
+            다운로드
+          </button>
         </div>
       </main>
     </div>

@@ -3,13 +3,13 @@ $background-color: #f7f7f7;
 $card-background: #fff;
 $button-background: #000;
 $input-border: #e5e5e5;
+
 .business-card-creator,
 .card,
 .input-group,
 .card-footer,
 .profile-image,
 .image-wrapper {
-  background-color: white !important;
   box-shadow: none; /* box-shadow 제거 */
 }
 
@@ -36,6 +36,7 @@ $input-border: #e5e5e5;
   .main-content {
     flex-grow: 1;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 100%;
@@ -90,6 +91,8 @@ $input-border: #e5e5e5;
       gap: 4px;
 
       label {
+        text-align: left;
+        padding-left: 5px;
         font-weight: 500;
       }
 
@@ -104,20 +107,34 @@ $input-border: #e5e5e5;
       padding: 16px;
       display: flex;
       justify-content: center;
+    }
+  }
 
-      button {
-        width: 100%;
-        padding: 12px;
-        background-color: $button-background;
-        color: #fff;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        font-weight: bold;
+  /* 다운로드 버튼을 카드 바깥에 배치 */
+  .download-section {
+    margin-top: 16px;
+    display: flex;
+    justify-content: center;
 
-        &:hover {
-          background-color: darken($button-background, 10%);
-        }
+    .download-button {
+      width: 100%;
+      max-width: 200px;
+      padding: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      background-color: $button-background;
+
+      &:hover {
+        background-color: darken($button-background, 10%);
+      }
+
+      &.disabled {
+        background-color: #ccc !important;
+        cursor: not-allowed;
       }
     }
   }
